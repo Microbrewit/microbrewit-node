@@ -34,7 +34,7 @@ class http
 
 		return paramTuples.join('&')
 
-	_handleResponse: (error, response, body, token) ->
+	_handleResponse: (error, response, body, token, callback) ->
 		if error
 			 callback error, null, null, token
 		else
@@ -116,8 +116,8 @@ class http
 					delete query.partial
 					delete query.params
 
-				request.post query, (error, response, body) ->
-					@_handleResponse(error, response, body, token)
+				request.post query, (error, response, body) =>
+					@_handleResponse(error, response, body, token, callback)
 					
 
 	# HTTP GET wrapper
@@ -140,8 +140,8 @@ class http
 					delete query.partial
 					delete query.params
 
-				request.get query, (error, response, body) ->
-					@_handleResponse(error, response, body, token)
+				request.get query, (error, response, body) =>
+					@_handleResponse(error, response, body, token, callback)
 
 	# HTTP PUT wrapper
 	# Used for updating records
@@ -166,8 +166,8 @@ class http
 					delete query.partial
 					delete query.params
 
-				request.get query, (error, response, body) ->
-					@_handleResponse(error, response, body, token)
+				request.get query, (error, response, body) =>
+					@_handleResponse(error, response, body, token, callback)
 
 	# HTTP DELETE wrapper
 	# @param [Object] query
@@ -191,7 +191,7 @@ class http
 					delete query.partial
 					delete query.params
 
-				request.get query, (error, response, body) ->
-					@_handleResponse(error, response, body, token)
+				request.get query, (error, response, body) =>
+					@_handleResponse(error, response, body, token, callback)
 
 module.exports = http
