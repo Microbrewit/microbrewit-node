@@ -18,9 +18,9 @@ defaults =
 	apiUrl: 'http://api.microbrew.it'
 
 modules = 
+	http: './http'
 	hops: './hops'
 	fermentables: './fermentables'
-	http: './http'
 
 exports.init = (config, callback) ->
 	# Init with params values
@@ -36,7 +36,4 @@ exports.init = (config, callback) ->
 	for key,val of modules
 		@[key] = new (require val)()
 
-	
-
-
-
+	return @
