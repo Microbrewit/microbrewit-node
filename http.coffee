@@ -103,6 +103,11 @@ class http
 	post: (query, callback, token = false) ->
 		@refreshToken token,
 			(err, response, token) =>
+
+				if token?.access_token
+					query.headers ?= {}
+					query.headers['Authorization'] = "Bearer #{token.access_token}"
+
 				unless query.url
 					query.partial ?= ''
 					query.params ?= {}
@@ -122,6 +127,11 @@ class http
 	get: (query, callback, token = false) ->
 		@refreshToken token,
 			(err, response, token) =>
+
+				if token?.access_token
+					query.headers ?= {}
+					query.headers['Authorization'] = "Bearer #{token.access_token}"
+
 				unless query.url
 					query.partial ?= ''
 					query.params ?= {}
@@ -143,6 +153,11 @@ class http
 		
 		@refreshToken token,
 			(err, response, token) =>
+
+				if token?.access_token
+					query.headers ?= {}
+					query.headers['Authorization'] = "Bearer #{token.access_token}"
+
 				unless query.url
 					query.partial ?= ''
 					query.params ?= {}
@@ -163,6 +178,11 @@ class http
 		
 		@refreshToken token,
 			(err, response, token) =>
+
+				if token?.access_token
+					query.headers ?= {}
+					query.headers['Authorization'] = "Bearer #{token.access_token}"
+					
 				unless query.url
 					query.partial ?= ''
 					query.params ?= {}
