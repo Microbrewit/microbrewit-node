@@ -128,8 +128,13 @@ class http
 		@refreshToken token,
 			(err, response, token) =>
 
+				if query.body and typeof query.body is 'object'
+					query.body = JSON.stringify query.body
+
+				query.headers ?= {}
+				query.headers['Content-Type'] ?= 'application/json'
+
 				if token?.access_token
-					query.headers ?= {}
 					query.headers['Authorization'] = "Bearer #{token.access_token}"
 
 				unless query.url
@@ -154,8 +159,13 @@ class http
 		@refreshToken token,
 			(err, response, token) =>
 
+				if query.body and typeof query.body is 'object'
+					query.body = JSON.stringify query.body
+
+				query.headers ?= {}
+				query.headers['Content-Type'] ?= 'application/json'
+
 				if token?.access_token
-					query.headers ?= {}
 					query.headers['Authorization'] = "Bearer #{token.access_token}"
 
 				unless query.url
@@ -166,7 +176,7 @@ class http
 					delete query.partial
 					delete query.params
 
-				request.get query, (error, response, body) =>
+				request.put query, (error, response, body) =>
 					@_handleResponse(error, response, body, token, callback)
 
 	# HTTP DELETE wrapper
@@ -191,7 +201,7 @@ class http
 					delete query.partial
 					delete query.params
 
-				request.get query, (error, response, body) =>
+				request.delete query, (error, response, body) =>
 					@_handleResponse(error, response, body, token, callback)
 
 module.exports = http
