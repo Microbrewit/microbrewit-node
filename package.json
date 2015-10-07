@@ -1,0 +1,26 @@
+{
+  "name": "microbrewit-node",
+  "version": "1.0.0",
+  "description": "Official library for communicating with the Microbrew.it API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "coffee -cr *.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microbrewit/microbrewit-node.git"
+  },
+  "keywords": [
+    "microbrewit"
+  ],
+  "author": "Torstein Thune <torstein@gmail.com> (http://thune.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Microbrewit/microbrewit-node/issues"
+  },
+  "homepage": "https://github.com/Microbrewit/microbrewit-node#readme",
+  "dependencies": {
+    "request": "^2.64.0"
+  }
+}
