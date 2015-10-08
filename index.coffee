@@ -21,6 +21,7 @@ modules =
 	http: './http'
 	hops: './hops'
 	fermentables: './fermentables'
+	beerStyles: './beerstyles'
 
 exports.init = (config, callback) ->
 	# Init with params values
