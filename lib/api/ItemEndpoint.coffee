@@ -9,18 +9,18 @@ http = require './http'
 
 class ItemEndpoint extends http
 
-	get: (query, callback) ->
+	get: (query, callback, token) ->
 		# Case: Get single
 		if typeof query is 'number'
-			super { partial: query }, callback
+			super { partial: query }, callback, token
 		# Case: ID given as object prop
 		else if query.id?
 			id = query.id 
 			delete query.id
-			super { partial: id, params: query}, callback
+			super { partial: id, params: query}, callback, token
 		# Something else
 		else
-			super { params: query }, callback
+			super { params: query }, callback, token
 
 	delete: (query, callback, token) ->
 		# Case: Get single
