@@ -23,4 +23,24 @@ class hops extends http
 		else
 			super { params: query }, callback
 
+	delete: (query, callback, token) ->
+		# Case: Get single
+		if typeof query is 'number'
+			super { partial: query }, callback, token
+		# Case: ID given as object prop
+		else if query.id?
+			id = query.id 
+			delete query.id
+			super { partial: id, params: query}, callback, token
+		# Something else
+		else
+			super { params: query }, callback, token
+
+	post: (hop, callback, token) ->
+		if typeof hop is 'object'
+			hop = JSON.stringify hop
+			
+		super { body: hop }, callback, token
+
+
 module.exports = hops
