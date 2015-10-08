@@ -104,8 +104,10 @@ class http
 		@refreshToken token,
 			(err, response, token) =>
 
+				unless query.headers
+					query.headers = {}
+				query.headers['Content-Type'] ?= 'application/json'
 				if token?.access_token
-					query.headers ?= {}
 					query.headers['Authorization'] = "Bearer #{token.access_token}"
 
 				unless query.url
