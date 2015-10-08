@@ -27,7 +27,7 @@ modules =
 	http: './api/http'
 	origins: './api/origins'
 	others: './api/others'
-	# search: './api/search'
+	search: './api/search'
 	suppliers: './api/suppliers'
 	# users: './api/users'
 	yeasts: './api/yeasts'
