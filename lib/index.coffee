@@ -18,7 +18,7 @@ defaults =
 	apiUrl: 'http://api.microbrew.it'
 
 modules = 
-	# beers: './api/beers'
+	beers: './api/beers'
 	beerStyles: './api/beerstyles'
 	# breweries: './api/breweries'
 	fermentables: './api/fermentables'
@@ -29,7 +29,7 @@ modules =
 	others: './api/others'
 	search: './api/search'
 	suppliers: './api/suppliers'
-	# users: './api/users'
+	users: './api/users'
 	yeasts: './api/yeasts'
 
 
