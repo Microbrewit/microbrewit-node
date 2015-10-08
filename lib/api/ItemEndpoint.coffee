@@ -15,12 +15,18 @@ class ItemEndpoint extends http
 			super { partial: query }, callback, token
 		# Case: ID given as object prop
 		else if query.id?
-			id = query.id 
+			partial = query.id 
 			delete query.id
-			super { partial: id, params: query}, callback, token
+
+			partial += "/#{query.partial}" if query.partial
+			delete query.partial
+			
+			super { partial: partial, params: query}, callback, token
 		# Something else
 		else
-			super { params: query }, callback, token
+			partial = query.partial
+			delete query.partial
+			super { partial: query.partial, params: query }, callback, token
 
 	delete: (query, callback, token) ->
 		# Case: Get single

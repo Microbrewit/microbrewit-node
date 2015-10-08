@@ -20,7 +20,7 @@ defaults =
 modules = 
 	beers: './api/beers'
 	beerStyles: './api/beerstyles'
-	# breweries: './api/breweries'
+	breweries: './api/breweries'
 	fermentables: './api/fermentables'
 	glasses: './api/glasses'
 	hops: './api/hops'
