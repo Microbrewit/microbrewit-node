@@ -18,10 +18,20 @@ defaults =
 	apiUrl: 'http://api.microbrew.it'
 
 modules = 
-	http: './api/http'
-	hops: './api/hops'
-	fermentables: './api/fermentables'
+	# beers: './api/beers'
 	beerStyles: './api/beerstyles'
+	# breweries: './api/breweries'
+	fermentables: './api/fermentables'
+	glasses: './api/glasses'
+	hops: './api/hops'
+	http: './api/http'
+	origins: './api/origins'
+	others: './api/others'
+	# search: './api/search'
+	suppliers: './api/suppliers'
+	# users: './api/users'
+	yeasts: './api/yeasts'
+
 
 exports.init = (config, callback) ->
 	# Init with params values
