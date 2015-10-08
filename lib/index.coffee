@@ -7,7 +7,7 @@ Node.js library for communicating with the Microbrew.it API.
 @copyright Microbrew.it 2015
 ###
 
-http = require './http'
+http = require './api/http'
 
 acceptedInitValues = [
 	'apiUrl'
@@ -18,10 +18,10 @@ defaults =
 	apiUrl: 'http://api.microbrew.it'
 
 modules = 
-	http: './http'
-	hops: './hops'
-	fermentables: './fermentables'
-	beerStyles: './beerstyles'
+	http: './api/http'
+	hops: './api/hops'
+	fermentables: './api/fermentables'
+	beerStyles: './api/beerstyles'
 
 exports.init = (config, callback) ->
 	# Init with params values

@@ -2,7 +2,7 @@
   "name": "microbrewit-node",
   "version": "1.0.0",
   "description": "Official library for communicating with the Microbrew.it API.",
-  "main": "index.coffee",
+  "main": "lib/index.coffee",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "coffee -cr *.coffee"
