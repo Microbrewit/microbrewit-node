@@ -203,7 +203,7 @@ class http
 					delete query.partial
 					delete query.params
 
-				request.delete query, (error, response, body) =>
+				request.del query, (error, response, body) =>
 					@_handleResponse(error, response, body, token, callback)
 
 module.exports = http
