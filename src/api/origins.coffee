@@ -5,7 +5,7 @@ API wrapper for origins endpoint
 @copyright Microbrew.it 2015
 ###
 
-ItemEndpoint = require './ItemEndpoint.coffee'
+ItemEndpoint = require './ItemEndpoint'
 
 class Origins extends ItemEndpoint
 	endpoint: 'origins'

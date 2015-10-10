@@ -5,7 +5,7 @@ API wrapper for search endpoint
 @copyright Microbrew.it 2015
 ###
 
-http = require './http.coffee'
+http = require './http'
 
 class Search extends http
 	endpoint: 'search'
