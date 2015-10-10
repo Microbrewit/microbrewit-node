@@ -5,7 +5,7 @@ API wrapper for beerstyles endpoint
 @copyright Microbrew.it 2015
 ###
 
-ItemEndpoint = require './ItemEndpoint.coffee'
+ItemEndpoint = require './ItemEndpoint'
 
 class Users extends ItemEndpoint
 	endpoint: 'users'

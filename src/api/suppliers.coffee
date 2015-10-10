@@ -5,7 +5,7 @@ API wrapper for suppliers endpoint
 @copyright Microbrew.it 2015
 ###
 
-ItemEndpoint = require './ItemEndpoint.coffee'
+ItemEndpoint = require './ItemEndpoint'
 
 class Suppliers extends ItemEndpoint
 	endpoint: 'suppliers'

@@ -5,7 +5,7 @@ API wrapper for yeasts endpoint
 @copyright Microbrew.it 2015
 ###
 
-ItemEndpoint = require './ItemEndpoint.coffee'
+ItemEndpoint = require './ItemEndpoint'
 
 class Yeasts extends ItemEndpoint
 	endpoint: 'yeasts'

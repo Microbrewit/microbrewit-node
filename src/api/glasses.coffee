@@ -5,7 +5,7 @@ API wrapper for glasses endpoint
 @copyright Microbrew.it 2015
 ###
 
-ItemEndpoint = require './ItemEndpoint.coffee'
+ItemEndpoint = require './ItemEndpoint'
 
 class Glasses extends ItemEndpoint
 	endpoint: 'glasses'
