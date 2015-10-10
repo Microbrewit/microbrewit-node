@@ -1,11 +1,11 @@
 {
   "name": "microbrewit-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official library for communicating with the Microbrew.it API.",
-  "main": "lib/index.coffee",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "coffee -o lib/ -c src/"
+    "prepublish": "coffee -o lib/ -c src/"
   },
   "repository": {
     "type": "git",
