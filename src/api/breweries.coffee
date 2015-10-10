@@ -22,7 +22,7 @@ API wrapper for breweries endpoint
 @copyright Microbrew.it 2015
 ###
 
-ItemEndpoint = require './ItemEndpoint.coffee'
+ItemEndpoint = require './ItemEndpoint'
 
 class BreweryMembers extends ItemEndpoint
 	endpoint: 'breweries'
@@ -43,6 +43,9 @@ class BreweryMembers extends ItemEndpoint
 				query.partial += "/#{query.username}"
 			delete query.username
 			delete query.userId
+
+			query.headers ?= {}
+			query.headers['Content-type'] ?= 'application/json'
 
 			super query, callback, token
 
