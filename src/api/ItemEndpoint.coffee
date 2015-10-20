@@ -19,14 +19,20 @@ class ItemEndpoint extends http
 			delete query.id
 
 			partial += "/#{query.partial}" if query.partial
+
 			delete query.partial
+
+			headers = query.headers
+			delete query.headers
 			
-			super { partial: partial, params: query}, callback, token
+			super { partial: partial, headers: headers, params: query}, callback, token
 		# Something else
 		else
 			partial = query.partial
+			headers = query.headers
+			delete query.headers
 			delete query.partial
-			super { partial: query.partial, params: query }, callback, token
+			super { partial: partial, headers: headers, params: query }, callback, token
 
 	delete: (query, callback, token) ->
 		# Case: Get single
