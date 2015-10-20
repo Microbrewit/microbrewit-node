@@ -20,7 +20,10 @@ class http
 	# @return [String] url
 	# @private
 	_generateUrl: (partial='') ->
-		return "#{@apiUrl}/#{@endpoint}/#{partial}"
+		url = "#{@apiUrl}"
+		url += "/#{@endpoint}" if @endpoint and @endpoint isnt ''
+		url += "/#{partial}" if partial and partial isnt ''
+		return url
 
 	# Create GET url from map
 	# @param [Object] params key, val of GET parameters
