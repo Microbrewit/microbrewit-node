@@ -18,6 +18,10 @@ class Search extends http
 	# @option query [String] partial (optional) If you want to search a specific endpoint (e.g fermentables, hops, yeasts, beers, beerstyles, ingredients, users, breweries, suppliers, origins, glasses, etc.)
 	# @param [Function] callback Will be called with error, response (http response), body (JSON.parsed if applicable)
 	get: (query, callback, token) ->
+		query.params ?= query
+		delete query.params.partial
+		delete query.params.headers
+
 		super query, callback, token
 
 	# Search in ingredients in Microbrew.it
@@ -28,13 +32,13 @@ class Search extends http
 		@get query, callback, token
 
 	# Search does not accept post
-	post: ->
+	post: (query, callback, token) ->
 		callback new Error 'Search does not accept POST calls.'
 	# Search does not accept put
-	put: ->
+	put: (query, callback, token) ->
 		callback new Error 'Search does not accept PUT calls.'
 	# Search does not accept delete
-	delete: ->
+	delete: (query, callback, token) ->
 		callback new Error 'Search does not accept DELETE calls.'
 
 

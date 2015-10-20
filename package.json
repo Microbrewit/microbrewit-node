@@ -1,6 +1,6 @@
 {
   "name": "microbrewit-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official library for communicating with the Microbrew.it API.",
   "main": "lib/index.js",
   "scripts": {
