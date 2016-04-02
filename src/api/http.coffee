@@ -10,16 +10,14 @@ This class is extended by the other API classes. Contains basic implementations 
 request = require 'request'
 querystring = require 'querystring'
 
-class http
+class Http
 	endpoint: ''
-
-	constructor: ->
 
 	# Generate url by concatenating apiUrl, endpoint and partial
 	# @param [String] partial (optional) url partial
 	# @return [String] url
 	# @private
-	_generateUrl: (partial='') ->
+	_generateUrl: (partial = '') ->
 		url = "#{@apiUrl}"
 		url += "/#{@endpoint}" if @endpoint and @endpoint isnt ''
 		url += "/#{partial}" if partial and partial isnt ''
@@ -39,9 +37,9 @@ class http
 
 	_handleResponse: (error, response, body, token, callback) ->
 		if error
-			 callback error, null, null, token
+			callback error, null, null, token
 		else
-			try 
+			try
 				body = JSON.parse body
 
 				if body.error
@@ -56,20 +54,25 @@ class http
 	# @param [String] password
 	# @param [Function] callback (err, response)
 	authenticate: (username, password, callback) ->
-		body = 
+
+		unless @clientSecret and @clientId
+			throw new Error 'You cannot authenticate without clientSecret and clientId.'
+
+		body =
 			username: username
 			password: password
-			grant_type: "password"
-		body.client_id = @clientId if @clientId
+			grant_type: 'password'
+			client_id: @clientId
+			client_secret: @clientSecret
+			scope: 'openid profile roles microbrewit-api offline_access'
 		
-		postObj = 
+		postObj =
 			headers:
-				'Content-Type':'application/x-www-form-urlencoded'
+				'Content-Type': 'application/x-www-form-urlencoded'
 			body: querystring.stringify body
-			url: "#{@apiUrl}/token"
+			url: "#{@authUrl}/connect/token"
 
 		@post postObj, callback
-
 
 	# Get new token if old is expired
 	# @param [Object] token
@@ -80,18 +83,20 @@ class http
 			callback null, null, null
 		else
 			# auth_token is expired, get new one using refresh_token
-			if new Date().getTime() > new Date(token[".expires"]).getTime()-30000 # 30 sec safety margin in case of HTTP lag
+			if new Date().getTime() > new Date(token['.expires']).getTime() - 30000 # 30 sec safety margin in case of HTTP lag
 				body =
 					refresh_token: token.refresh_token
-					grant_type: "refresh_token"
-				body.client_id = @clientId if @clientId
+					grant_type: 'refresh_token'
+					client_id: @clientId
+					client_secret: @clientSecret
+					scope: 'openid profile roles microbrewit-api offline_access'
 
-				postObj = 
+				postObj =
 					headers:
-						'Content-Type':'application/x-www-form-urlencoded'
+						'Content-Type': 'application/x-www-form-urlencoded'
 					body: querystring.stringify body
 					
-					url: "#{@apiUrl}/token"
+					url: "#{@authUrl}/connect/token"
 
 				@post postObj, callback
 						
@@ -212,4 +217,4 @@ class http
 				request.del query, (error, response, body) =>
 					@_handleResponse(error, response, body, token, callback)
 
-module.exports = http
+module.exports = Http

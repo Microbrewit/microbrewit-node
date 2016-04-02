@@ -12,10 +12,13 @@ http = require './api/http'
 acceptedInitValues = [
 	'apiUrl'
 	'clientId'
+	'clientSecret'
+	'authUrl'
 ]
 
 defaults =
 	apiUrl: 'http://api.microbrew.it'
+	authUrl: 'http://auth.microbrew.it'
 
 modules = 
 	beers: './api/beers'
