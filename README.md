@@ -8,7 +8,12 @@ All microbrewit-node methods are async, and follow the standard Node.js conventi
 ## Usage
 
 **Require mbit:**
-```mbit = (require 'microbrewit-node').init({ clientId: 'your Microbrew.it API token'})```
+```
+    mbit = (require 'microbrewit-node').init
+        clientId: 'your Microbrew.it API token'
+        clientSecret: 'your secret'
+        authUrl: '' # optional: the authentication server to use
+        apiUrl: '' # optional: the API url to use
 *Not all endpoints require a clientID.*
 
 Get Hop with ID 16: `mbit.hops.get(16, callback)`.

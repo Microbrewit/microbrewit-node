@@ -11,9 +11,9 @@ http = require './api/http'
 
 acceptedInitValues = [
 	'apiUrl'
+	'authUrl'
 	'clientId'
 	'clientSecret'
-	'authUrl'
 ]
 
 defaults =
