@@ -48,10 +48,19 @@ class ItemEndpoint extends http
 			super { params: query }, callback, token
 
 	post: (item, callback, token) ->
+		if item.partial
+			partial = item.partial
+			delete item.partial
+
+		if item.headers
+			headers = item.headers
+
+		if item.payload
+			item = item.payload
 		if typeof item is 'object'
 			item = JSON.stringify item
 			
-		super { body: item }, callback, token
+		super { body: item, partial, headers }, callback, token
 
 
 module.exports = ItemEndpoint

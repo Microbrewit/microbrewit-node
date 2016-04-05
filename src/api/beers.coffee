@@ -36,5 +36,11 @@ class Beers extends ItemEndpoint
 	# POST BeerXML and get a beer object in return
 	# @todo Implement
 	beerxml: (xml, callback, token) ->
-		callback new Error 'Not implemented'
+		query = 
+			partial: 'beerxml'
+			payload: xml
+			headers:
+				'Content-Type': 'application/xml'
+		@post(query, callback, token)
+
 module.exports = Beers

@@ -112,6 +112,7 @@ class Http
 		@refreshToken token,
 			(err, response, token) =>
 
+				console.log query
 				unless query.headers
 					query.headers = {}
 				query.headers['Content-Type'] ?= 'application/json'
@@ -126,6 +127,7 @@ class Http
 
 					delete query.partial
 					delete query.params
+
 
 				request.post query, (error, response, body) =>
 					@_handleResponse(error, response, body, token, callback)
