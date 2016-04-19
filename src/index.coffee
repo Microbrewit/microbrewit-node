@@ -34,6 +34,7 @@ modules =
 	suppliers: './api/suppliers'
 	users: './api/users'
 	yeasts: './api/yeasts'
+	ingredients: './api/ingredients' 
 
 
 exports.init = (config, callback) ->
