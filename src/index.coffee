@@ -11,11 +11,14 @@ http = require './api/http'
 
 acceptedInitValues = [
 	'apiUrl'
+	'authUrl'
 	'clientId'
+	'clientSecret'
 ]
 
 defaults =
 	apiUrl: 'http://api.microbrew.it'
+	authUrl: 'http://auth.microbrew.it'
 
 modules = 
 	beers: './api/beers'
@@ -31,6 +34,7 @@ modules =
 	suppliers: './api/suppliers'
 	users: './api/users'
 	yeasts: './api/yeasts'
+	ingredients: './api/ingredients' 
 
 
 exports.init = (config, callback) ->
